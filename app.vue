@@ -1,5 +1,7 @@
+<script setup lang="ts">
+import UserSearchInput from './components/UserSearchInput.vue';
+</script>
+
 <template>
-  <div>
-    <NuxtWelcome />
-  </div>
+  <UserSearchInput />
 </template>
