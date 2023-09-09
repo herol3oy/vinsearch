@@ -1,4 +1,7 @@
+import crypto from 'crypto';
+
 import { AiChicagoArtwork } from '~/types/ai-chicago-art-work';
+import { ApiSource } from '~/types/api-source';
 import { GlobalArtWork } from '~/types/global-art-work';
 
 const createAiChicagoApiUrl = (query: string) =>
@@ -9,20 +12,29 @@ const createImageUrl = (id: string) =>
 
 const createArtWorkUrl = (id: number) => `https://www.artic.edu/artworks/${id}`;
 
-export default defineEventHandler(async (event) => {
+export const aiChicago = async (query: string) => {
   try {
-    const query = getQuery(event);
-    const res = await fetch(createAiChicagoApiUrl(query.param as string));
+    const res = await fetch(createAiChicagoApiUrl(query));
     const json = await res.json();
 
     const data: GlobalArtWork[] = json.data.map((item: AiChicagoArtwork) => ({
+      id: crypto.randomUUID(),
       title: item.title,
       imageUrl: createImageUrl(item.image_id),
       pageUrl: createArtWorkUrl(item.id),
+      apiSource: ApiSource.ART_INSTITUTE_OF_CHICAGO,
     }));
 
-    return { data };
+    return data;
   } catch (error) {
     return [];
   }
+};
+
+export default defineEventHandler(async (event) => {
+  const query = getQuery(event);
+  const param = query.param;
+  const data = await aiChicago(param as string);
+
+  return data;
 });

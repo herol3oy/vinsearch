@@ -7,9 +7,7 @@ const searchQuery = ref('');
 const artWorks = ref<GlobalArtWork[]>([]);
 
 async function requestDataHandle() {
-  // const res = await fetch(`/api/rijks?param=${searchQuery.value}`);
-  // const res = await fetch(`/api/cleveland?param=${searchQuery.value}`);
-  const res = await fetch(`/api/ai-chicago?param=${searchQuery.value}`);
+  const res = await fetch(`/api/vinsearch?param=${searchQuery.value}`);
   const { data } = await res.json();
   artWorks.value = data;
 }
@@ -30,15 +28,21 @@ async function requestDataHandle() {
   <section>
     <figure
       v-for="artWork in artWorks"
-      :key="artWork.title"
+      :key="artWork.id"
     >
-      <NuxtImg
-        :src="artWork.imageUrl"
-        :alt="artWork.title"
-        quality="10"
-        placeholder="https://placehold.co/600x400"
-      />
-      <figcaption>{{ artWork.title }}</figcaption>
+      <NuxtLink
+        :to="artWork.pageUrl"
+        target="_blank"
+      >
+        <NuxtImg
+          :src="artWork.imageUrl"
+          :alt="artWork.title"
+          quality="10"
+          placeholder="https://placehold.co/600x400"
+        />
+        <figcaption>{{ artWork.title }}</figcaption>
+      </NuxtLink>
+      <small>Source: {{ artWork.apiSource }}</small>
     </figure>
   </section>
 </template>
@@ -50,7 +54,18 @@ section {
   gap: 1rem;
 }
 
+figure {
+  background-color: azure;
+  padding: 1rem;
+}
+
 img {
   width: 10rem;
+}
+
+small {
+  background-color: lightcoral;
+  padding: 0.2rem;
+  border-radius: 2rem;
 }
 </style>
