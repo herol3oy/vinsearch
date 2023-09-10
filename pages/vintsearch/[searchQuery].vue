@@ -1,45 +1,68 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-
+import { ApiSource } from '~/types/api-source';
 import { GlobalArtWork } from '~/types/global-art-work';
 
 const artWorks = ref<GlobalArtWork[]>([]);
+const selectedMuseumApi = ref<ApiSource[]>([]);
 
 const route = useRoute();
 
 onMounted(async () => {
-  const res = await fetch(
-    `/api/vinsearch?param=${[route.params.searchQuery, route.query.apiSource]}`,
-  );
+  const baseApi = `/api/vintsearch?param=${route.params.searchQuery}`;
+  const res = await fetch(baseApi);
   const { data } = await res.json();
+
   artWorks.value = data;
+});
+
+const filteredArtWorks = computed(() => {
+  if (
+    !selectedMuseumApi.value.length ||
+    selectedMuseumApi.value.includes(ApiSource.ALL_SOURCES)
+  ) {
+    return artWorks.value;
+  } else {
+    return artWorks.value.filter((artWork) =>
+      selectedMuseumApi.value.includes(artWork.apiSource),
+    );
+  }
 });
 </script>
 
 <template>
-  <div>
-    <section>
-      <figure
-        v-for="artWork in artWorks"
-        :key="artWork.id"
+  <section>
+    <label
+      v-for="(apiLabel, apiValue) in ApiSource"
+      :key="apiValue"
+    >
+      <input
+        v-model="selectedMuseumApi"
+        type="checkbox"
+        :value="apiLabel"
       >
-        <NuxtLink
-          :to="artWork.pageUrl"
-          target="_blank"
-        >
-          <NuxtImg
-            :src="artWork.imageUrl"
-            :alt="artWork.title"
-            quality="10"
-            placeholder="https://placehold.co/600x400"
-          />
-          <figcaption>{{ artWork.title }}</figcaption>
-        </NuxtLink>
-        <small>Source: {{ artWork.apiSource }}</small>
-      </figure>
-    </section>
-  </div>
+      {{ apiLabel }}
+    </label>
+    <figure
+      v-for="artWork in filteredArtWorks"
+      :key="artWork.id"
+    >
+      <NuxtLink
+        :to="artWork.pageUrl"
+        target="_blank"
+      >
+        <NuxtImg
+          :src="artWork.imageUrl"
+          :alt="artWork.title"
+          quality="10"
+          placeholder="https://placehold.co/600x400"
+        />
+        <figcaption>
+          {{ artWork.title }}
+        </figcaption>
+      </NuxtLink>
+      <small>Source: {{ artWork.apiSource }}</small>
+    </figure>
+  </section>
 </template>
 
 <style scoped>
