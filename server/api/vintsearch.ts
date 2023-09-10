@@ -1,8 +1,9 @@
-import { aiChicago } from './ai-chicago';
+import { requestAiChicagoData } from '~/utils/request-ai-chicago-data';
+
 import { clevaland } from './cleveland';
 import { rijks } from './rijks';
 
-const MUSEUM_END_POINTS = [rijks, clevaland, aiChicago];
+const MUSEUM_END_POINTS = [rijks, clevaland, requestAiChicagoData];
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
