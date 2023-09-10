@@ -17,10 +17,7 @@ onMounted(async () => {
 })
 
 const filteredArtWorks = computed(() => {
-  if (
-    !selectedMuseumApi.value.length ||
-    selectedMuseumApi.value.includes(ApiSource.ALL_SOURCES)
-  ) {
+  if (!selectedMuseumApi.value.length) {
     return artWorks.value
   } else {
     return artWorks.value.filter((artWork) =>
@@ -28,6 +25,10 @@ const filteredArtWorks = computed(() => {
     )
   }
 })
+
+const resetFilter = () => {
+  selectedMuseumApi.value = []
+}
 </script>
 
 <template>
@@ -43,6 +44,9 @@ const filteredArtWorks = computed(() => {
       >
       {{ apiLabel }}
     </label>
+    <button @click="resetFilter">
+      Reset
+    </button>
     <figure
       v-for="artWork in filteredArtWorks"
       :key="artWork.id"
