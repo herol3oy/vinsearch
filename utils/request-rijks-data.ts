@@ -1,4 +1,4 @@
-import { ArtObject } from '~/types/ArtObject';
+import { ArtObject } from '~/types/art-object';
 import { GlobalArtWork } from '~/types/global-art-work';
 import { RijksArtwork } from '~/types/rijks-art-work';
 

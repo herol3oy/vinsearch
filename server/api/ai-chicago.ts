@@ -2,9 +2,9 @@ import { requestAiChicagoData } from '~/utils/request-ai-chicago-data';
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  const param = query.param;
+  const param = String(query.param);
 
-  const data = await requestAiChicagoData(param as string);
+  const data = await requestAiChicagoData(param);
 
   return data;
 });

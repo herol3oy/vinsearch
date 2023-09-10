@@ -9,12 +9,12 @@ const MUSEUM_END_POINTS = [
 ];
 
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event);
-  const userSearchQueryParam = String(query.param);
+  const { query } = getQuery(event);
+  const userSearchQuery = String(query);
 
   try {
     const museumApiRequests = MUSEUM_END_POINTS.map(async (museumApi) => {
-      return await museumApi(userSearchQueryParam);
+      return await museumApi(userSearchQuery);
     });
 
     const data = await Promise.all(museumApiRequests);

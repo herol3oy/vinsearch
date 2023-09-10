@@ -9,7 +9,7 @@ const selectedMuseumApi = ref<ApiSource[]>([]);
 const route = useRoute();
 
 onMounted(async () => {
-  const baseApi = `/api/vintsearch?param=${route.params.searchQuery}`;
+  const baseApi = `/api/vintsearch?query=${route.params.searchQuery}`;
   const res = await fetch(baseApi);
   const { data }: Data = await res.json();
 

@@ -1,3 +1,4 @@
+import { AiChicagoData } from '~/types/ai-chicago-data';
 import { GlobalArtWork } from '~/types/global-art-work';
 
 import {
@@ -8,7 +9,7 @@ import {
 export const requestAiChicagoData = async (query: string) => {
   try {
     const res = await fetch(createAiChicagoApiUrl(query));
-    const json = await res.json();
+    const json: AiChicagoData = await res.json();
 
     const data: GlobalArtWork[] = mapAiChicagoToBaseArtWork(json.data);
 
