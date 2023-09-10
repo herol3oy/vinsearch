@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ApiSource } from '~/types/api-source';
+import { Data } from '~/types/data';
 import { GlobalArtWork } from '~/types/global-art-work';
 
 const artWorks = ref<GlobalArtWork[]>([]);
@@ -10,7 +11,7 @@ const route = useRoute();
 onMounted(async () => {
   const baseApi = `/api/vintsearch?param=${route.params.searchQuery}`;
   const res = await fetch(baseApi);
-  const { data } = await res.json();
+  const { data }: Data = await res.json();
 
   artWorks.value = data;
 });
