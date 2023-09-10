@@ -3,11 +3,11 @@ import { GlobalArtWork } from '~/types/global-art-work';
 import { RijksArtwork } from '~/types/rijks-art-work';
 
 import { createRijksApiUrl, mapRijksToGlobalArtWork } from './factory/rijks';
+import { fetcher } from './fetcher';
 
 export const requestRijksdata = async (query: string) => {
   try {
-    const res = await fetch(createRijksApiUrl(query));
-    const json: ArtObject = await res.json();
+    const json = await fetcher<ArtObject>(createRijksApiUrl(query));
 
     const withAvailableImages: RijksArtwork[] = json.artObjects.filter(
       (artItem: RijksArtwork) => !!artItem.permitDownload,

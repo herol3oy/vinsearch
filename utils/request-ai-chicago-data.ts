@@ -8,8 +8,7 @@ import {
 
 export const requestAiChicagoData = async (query: string) => {
   try {
-    const res = await fetch(createAiChicagoApiUrl(query));
-    const json: AiChicagoData = await res.json();
+    const json = await fetcher<AiChicagoData>(createAiChicagoApiUrl(query));
 
     const data: GlobalArtWork[] = mapAiChicagoToBaseArtWork(json.data);
 

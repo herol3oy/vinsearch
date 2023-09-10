@@ -5,11 +5,11 @@ import {
   createClevelandApiUrl,
   mapClevelandToBaseArtWork,
 } from './factory/cleveland';
+import { fetcher } from './fetcher';
 
 export const requestClevalandData = async (query: string) => {
   try {
-    const res = await fetch(createClevelandApiUrl(query));
-    const json: ClevelandData = await res.json();
+    const json = await fetcher<ClevelandData>(createClevelandApiUrl(query));
 
     const data: GlobalArtWork[] = mapClevelandToBaseArtWork(json);
 
