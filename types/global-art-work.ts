@@ -1,9 +1,9 @@
-import { ApiSource } from './api-source';
+import { ApiSource } from './api-source'
 
 export interface GlobalArtWork {
-  id: string;
-  apiSource: ApiSource;
-  title: string;
-  imageUrl: string;
-  pageUrl: string;
+  id: string
+  apiSource: ApiSource
+  title: string
+  imageUrl: string
+  pageUrl: string
 }

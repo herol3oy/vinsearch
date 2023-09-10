@@ -1,5 +1,5 @@
-import { Url } from './url';
+import { Url } from './url'
 
 export interface Website {
-  web: Url;
+  web: Url
 }

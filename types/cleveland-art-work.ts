@@ -1,7 +1,7 @@
-import { Website } from './website';
+import { Website } from './website'
 
 export interface ClevelandArtWork {
-  title: string;
-  images: Website;
-  url: string;
+  title: string
+  images: Website
+  url: string
 }

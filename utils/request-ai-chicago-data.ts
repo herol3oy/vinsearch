@@ -1,20 +1,20 @@
-import { AiChicagoData } from '~/types/ai-chicago-data';
-import { GlobalArtWork } from '~/types/global-art-work';
+import { AiChicagoData } from '~/types/ai-chicago-data'
+import { GlobalArtWork } from '~/types/global-art-work'
 
 import {
   createAiChicagoApiUrl,
   mapAiChicagoToBaseArtWork,
-} from './factory/ai-chicago';
-import { fetcher } from './fetcher';
+} from './factory/ai-chicago'
+import { fetcher } from './fetcher'
 
 export const requestAiChicagoData = async (query: string) => {
   try {
-    const json = await fetcher<AiChicagoData>(createAiChicagoApiUrl(query));
+    const json = await fetcher<AiChicagoData>(createAiChicagoApiUrl(query))
 
-    const data: GlobalArtWork[] = mapAiChicagoToBaseArtWork(json.data);
+    const data: GlobalArtWork[] = mapAiChicagoToBaseArtWork(json.data)
 
-    return data;
+    return data
   } catch (error) {
-    return [];
+    return []
   }
-};
+}

@@ -1,5 +1,5 @@
-import { GlobalArtWork } from './global-art-work';
+import { GlobalArtWork } from './global-art-work'
 
 export interface Data {
-  data: GlobalArtWork[];
+  data: GlobalArtWork[]
 }

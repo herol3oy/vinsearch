@@ -1,5 +1,5 @@
-import { RijksArtwork } from './rijks-art-work';
+import { RijksArtwork } from './rijks-art-work'
 
 export interface ArtObject {
-  artObjects: RijksArtwork[];
+  artObjects: RijksArtwork[]
 }

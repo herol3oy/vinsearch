@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const userSearchQuery = ref('');
-const router = useRouter();
+const userSearchQuery = ref('')
+const router = useRouter()
 
 const onSubmitForm = async () => {
-  const baseApiUrl = `/vintsearch/${userSearchQuery.value}`;
-  return await router.push(baseApiUrl);
-};
+  const baseApiUrl = `/vintsearch/${userSearchQuery.value}`
+  return await router.push(baseApiUrl)
+}
 </script>
 
 <template>

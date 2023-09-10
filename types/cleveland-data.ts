@@ -1,5 +1,5 @@
-import { ClevelandArtWork } from './cleveland-art-work';
+import { ClevelandArtWork } from './cleveland-art-work'
 
 export interface ClevelandData {
-  data: ClevelandArtWork[];
+  data: ClevelandArtWork[]
 }

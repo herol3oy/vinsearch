@@ -1,10 +1,10 @@
-import { requestClevalandData } from '~/utils/request-cleveland-data';
+import { requestClevalandData } from '~/utils/request-cleveland-data'
 
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event);
-  const param = String(query.param);
+  const query = getQuery(event)
+  const param = String(query.param)
 
-  const data = await requestClevalandData(param);
+  const data = await requestClevalandData(param)
 
-  return data;
-});
+  return data
+})

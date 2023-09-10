@@ -1,3 +1,3 @@
 export interface Web {
-  web: string;
+  web: string
 }
