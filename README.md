@@ -1,63 +1,16 @@
-# Nuxt 3 Minimal Starter
+# 🧑🏼‍🎨 Vintsearch (Vincent <s>van Gogh</s>)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Vintsearch is a nuxt app which helps you to search through the artifacts of differnet museums that provided public acesse to their API.
 
-## Setup
+## 🏛️ Museums (API)
 
-Make sure to install the dependencies:
+- [Rijksmuseum](https://data.rijksmuseum.nl/object-metadata/api/)
+- [The Art Institute of Chicago](https://api.artic.edu/docs/)
+- [The Cleveland Museum of Art](https://openaccess-api.clevelandart.org/)
+- more coming...
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## 🛠️ Setup
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
+npm install && npm run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
