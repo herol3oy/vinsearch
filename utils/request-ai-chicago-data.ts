@@ -5,6 +5,7 @@ import {
   createAiChicagoApiUrl,
   mapAiChicagoToBaseArtWork,
 } from './factory/ai-chicago';
+import { fetcher } from './fetcher';
 
 export const requestAiChicagoData = async (query: string) => {
   try {
