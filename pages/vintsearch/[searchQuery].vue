@@ -32,63 +32,51 @@ const resetFilter = () => {
 </script>
 
 <template>
-  <section>
-    <label
-      v-for="(apiLabel, apiValue) in ApiSource"
-      :key="apiValue"
+  <div>
+    <form
+      class="p-10 flex flex-col md:flex-row justify-center gap-5 align-middle items-center"
     >
-      <input
-        v-model="selectedMuseumApi"
-        type="checkbox"
-        :value="apiLabel"
+      <label
+        v-for="(apiLabel, apiValue) in ApiSource"
+        :key="apiValue"
+        class="flex items-center gap-5"
       >
-      {{ apiLabel }}
-    </label>
-    <button @click="resetFilter">
-      Reset
-    </button>
-    <figure
-      v-for="artWork in filteredArtWorks"
-      :key="artWork.id"
-    >
-      <NuxtLink
-        :to="artWork.pageUrl"
-        target="_blank"
+        <input
+          v-model="selectedMuseumApi"
+          class="checkbox checkbox-primary"
+          type="checkbox"
+          :value="apiLabel"
+        >
+        {{ apiLabel }}
+      </label>
+      <button
+        class="btn btn-active btn-ghost"
+        @click="resetFilter"
       >
-        <NuxtImg
-          :src="artWork.imageUrl"
-          :alt="artWork.title"
-          quality="10"
-          placeholder="https://placehold.co/600x400"
-        />
-        <figcaption>
-          {{ artWork.title }}
-        </figcaption>
-      </NuxtLink>
-      <small>Source: {{ artWork.apiSource }}</small>
-    </figure>
-  </section>
+        Reset
+      </button>
+    </form>
+    <section class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5">
+      <figure
+        v-for="artWork in filteredArtWorks"
+        :key="artWork.id"
+      >
+        <NuxtLink
+          :to="artWork.pageUrl"
+          target="_blank"
+        >
+          <NuxtImg
+            :src="artWork.imageUrl"
+            :alt="artWork.title"
+            quality="10"
+            placeholder="https://placehold.co/600x400"
+          />
+          <figcaption>
+            {{ artWork.title }}
+          </figcaption>
+        </NuxtLink>
+        <small class="badge badge-accent">{{ artWork.apiSource }}</small>
+      </figure>
+    </section>
+  </div>
 </template>
-
-<style scoped>
-section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-figure {
-  background-color: azure;
-  padding: 1rem;
-}
-
-img {
-  width: 10rem;
-}
-
-small {
-  background-color: lightcoral;
-  padding: 0.2rem;
-  border-radius: 2rem;
-}
-</style>
