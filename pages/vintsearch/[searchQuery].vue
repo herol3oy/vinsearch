@@ -26,6 +26,17 @@ const filteredArtWorks = computed(() => {
   }
 })
 
+const createBadge = computed(() => {
+  const badgeClasses: Record<ApiSource, string> = {
+    [ApiSource.ART_INSTITUTE_OF_CHICAGO]: 'badge-info',
+    [ApiSource.CLEVELAND_MUSEUM_OF_ART]: 'badge-primary',
+    [ApiSource.RIJKSMUSEUM]: 'badge-secondary',
+    [ApiSource.NYPL]: 'badge-accent',
+  }
+
+  return (apiSource: ApiSource) => badgeClasses[apiSource]
+})
+
 const resetFilter = () => {
   selectedMuseumApi.value = []
 }
@@ -75,7 +86,8 @@ const resetFilter = () => {
             {{ artWork.title }}
           </figcaption>
         </NuxtLink>
-        <small class="badge badge-accent">{{ artWork.apiSource }}</small>
+        <small :class="`badge badge-outline ${createBadge(artWork.apiSource)}`">{{ artWork.apiSource }}
+        </small>
       </figure>
     </section>
   </div>
