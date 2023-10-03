@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ApiSource } from '~/types/api-source'
+
 const userSearchQuery = ref('')
 const router = useRouter()
 
@@ -41,11 +43,17 @@ const onSubmitForm = async () => {
           Search
         </button>
       </form>
-      <small class="text-center">
-        Rijksmuseum • The Art Institute of Chicago • The Cleveland Museum of Art
-        <br>
-        and more are coming...
-      </small>
+      <section class="flex flex-col items-center gap-2 justify-center">
+        <h1 class="font-bold">
+          Available resources:
+        </h1>
+        <small
+          v-for="(api, key) in ApiSource"
+          :key="key"
+        >
+          {{ api }}
+        </small>
+      </section>
     </section>
   </main>
 </template>
