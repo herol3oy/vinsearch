@@ -1,5 +1,6 @@
 import { requestAiChicagoData } from '~/utils/request-ai-chicago-data'
 import { requestClevalandData } from '~/utils/request-cleveland-data'
+import { requestHarvardData } from '~/utils/request-harvard-data'
 import { requestNYPLData } from '~/utils/request-nypl-data'
 import { requestRijksdata } from '~/utils/request-rijks-data'
 
@@ -8,6 +9,7 @@ const MUSEUM_END_POINTS = [
   requestClevalandData,
   requestAiChicagoData,
   requestNYPLData,
+  requestHarvardData,
 ]
 
 export default defineEventHandler(async (event) => {

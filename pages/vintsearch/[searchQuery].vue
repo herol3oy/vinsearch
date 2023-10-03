@@ -32,6 +32,7 @@ const createBadge = computed(() => {
     [ApiSource.CLEVELAND_MUSEUM_OF_ART]: 'badge-primary',
     [ApiSource.RIJKSMUSEUM]: 'badge-secondary',
     [ApiSource.NYPL]: 'badge-accent',
+    [ApiSource.HARVARD]: 'badge-warning',
   }
 
   return (apiSource: ApiSource) => badgeClasses[apiSource]
