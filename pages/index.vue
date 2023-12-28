@@ -23,8 +23,8 @@ const onSubmitForm = async () => {
           VintSearch
         </h1>
         <p class="text-center text-2xl w-full md:w-3/4">
-          Vintsearch helps you to search through the artifacts of differnet
-          museums that provided public acesse to their API
+          Vintsearch helps you to search through the artifacts of different
+          museums that provided public access to their API
         </p>
       </div>
       <form
