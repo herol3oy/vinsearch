@@ -1,6 +1,6 @@
 # 🧑🏼‍🎨 Vintsearch (Vincent <s>van Gogh</s>)
 
-Vintsearch is a nuxt app which helps you to search through the artifacts of differnet museums that provided public acesse to their API.
+​Vintsearch is a nuxt app which helps you to search through the artifacts of different museums that provide public access to their API.
 
 ## 🏛️ Museums (API)
 
